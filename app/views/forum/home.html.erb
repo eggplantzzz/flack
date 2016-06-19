@@ -1,3 +1,20 @@
 <h1>Welcome
   <%= session[:username] %>
 </h1>
+
+<!-- Area for displaying messages -->
+<div id="message-area">
+  <% if !(Message.all[0].nil?) %>
+  <%= (Message.last).content %>
+  <% end %>
+</div>
+
+<!-- Area for allowing user message creation -->
+<section id="user-input">
+
+  <form action="/forum/post_message" method="get">
+    <input type="submit" value="Post"/>
+    <input id="message-field" type="text" name="content" placeholder="Enter your message here."/>
+  </form>
+
+</section>

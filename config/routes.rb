@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
   get 'forum/home'
 
+  get 'forum/post_message'
+
   get 'registration/register'
 
   get 'registration/validate' => 'registration#validate'
