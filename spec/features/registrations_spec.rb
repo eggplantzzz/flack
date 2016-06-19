@@ -23,11 +23,7 @@ RSpec.feature "Registrations", type: :feature do
       And 'I can push the submit button' do
         click_button 'Submit'
       end
-      Then 'I will see the forum page' do
-        expect(page).to have_content "Welcome Alladin"
-      end
       And 'if I go back to the registration page' do
-        visit '/'
         click_link 'Register'
       end
       And 'try to register the same name and push submit I should get an error message' do

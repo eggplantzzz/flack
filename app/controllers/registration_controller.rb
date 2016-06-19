@@ -11,7 +11,7 @@ class RegistrationController < ApplicationController
     if @user.valid?
       @user.save
       session[:username] = @username
-      redirect_to '/forum/home'
+      redirect_to '/'
     else
       flash[:alert] = "Username already exists. Please choose a different one."
       redirect_to '/registration/register'

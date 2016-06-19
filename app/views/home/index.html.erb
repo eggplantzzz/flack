@@ -1,9 +1,9 @@
-<h1>Welcome to the Login Page</h1>
+<h1>Please log in</h1>
 
+<%= flash[:notice] %>
 
-
-<form action="#" method="get">
-  <input name="User Name" type="text" placeholder="User Name" required/>
+<form action="/home/login" method="get">
+  <input name="Username" type="text" placeholder="User Name" required/>
   <input name="Password" type="text" placeholder="Password" required/>
   <input type="submit" value="Log In"/>
 </form>
