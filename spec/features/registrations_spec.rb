@@ -26,6 +26,16 @@ RSpec.feature "Registrations", type: :feature do
       Then 'I will see the forum page' do
         expect(page).to have_content "Welcome Alladin"
       end
+      And 'if I go back to the registration page' do
+        visit '/'
+        click_link 'Register'
+      end
+      And 'try to register the same name and push submit I should get an error message' do
+        fill_in 'Username', with: 'Alladin'
+        fill_in 'Password', with: 'DonaldDraper'
+        click_button 'Submit'
+        expect(page).to have_content 'Username already exists'
+      end
     end
   end
 end

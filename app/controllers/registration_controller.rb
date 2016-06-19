@@ -3,14 +3,18 @@ class RegistrationController < ApplicationController
   end
 
   def validate
-    
     @username = params[:Username]
     @password = params[:Password]
     @user = User.new
     @user.username = @username
     @user.password = @password
-    @user.save
-    cookies[:username] = @username
-    redirect_to '/forum/home'
+    if @user.valid?
+      @user.save
+      session[:username] = @username
+      redirect_to '/forum/home'
+    else
+      flash[:alert] = "Username already exists. Please choose a different one."
+      redirect_to '/registration/register'
+    end
   end
 end
