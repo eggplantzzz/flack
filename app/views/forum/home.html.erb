@@ -4,8 +4,12 @@
 
 <!-- Area for displaying messages -->
 <div id="message-area">
+  <!-- If there are messages, display up to the last 12 -->
   <% if !(Message.all[0].nil?) %>
-  <%= (Message.last).content %>
+    <% messages = Message.last(12) %>
+    <% messages.each do |message| %>
+    <p><%=" - " + message.content + " -- " + message.username %></p>
+    <% end %>
   <% end %>
 </div>
 

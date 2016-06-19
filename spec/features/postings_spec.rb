@@ -31,6 +31,9 @@ RSpec.feature "Postings", type: :feature do
       And 'I should see the message displayed' do
         expect(page).to have_content "Dry as a tomb, your coloured lids"
       end
+      And 'I should see the username displayed next to it' do
+        expect(page).to have_content "Dry as a tomb, your coloured lids -- 2345"
+      end
     end
   end
 end
