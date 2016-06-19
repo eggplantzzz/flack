@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'forum/home'
+
+  get 'registration/register'
+
+  get 'registration/validate' => 'registration#validate'
+
   root 'home#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
