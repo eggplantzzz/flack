@@ -8,7 +8,7 @@
   <% if !(Message.all[0].nil?) %>
     <% messages = Message.last(12) %>
     <% messages.each do |message| %>
-    <p><%=" - " + message.content + " -- " + message.username %></p>
+    <p><%=" - " + message.content + " -- " + (message.user).username %></p>
     <% end %>
   <% end %>
 </div>

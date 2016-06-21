@@ -5,6 +5,7 @@ class ForumController < ApplicationController
   def post_message
     @content = params[:content]
     @username = session[:username]
+    @user = User.find_by username: @username
     # If the user has not typed any input, do nothing
     if @content.nil? || @content == ""
       redirect_to '/forum/home'
@@ -12,7 +13,7 @@ class ForumController < ApplicationController
     else
       @new_message = Message.new
       @new_message.content = @content
-      @new_message.username = @username
+      @new_message.user = @user
       @new_message.save
       redirect_to '/forum/home'
     end
