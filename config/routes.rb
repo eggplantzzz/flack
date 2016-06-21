@@ -5,7 +5,7 @@ Rails.application.routes.draw do
 
   get 'registration/register'
 
-  get 'registration/validate' => 'registration#validate'
+  post 'registration/validate'
 
   root 'home#index'
 

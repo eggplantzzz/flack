@@ -2,7 +2,7 @@
 
 <%= flash[:alert] %>
 
-<form action="/registration/validate" method="get">
+<form action="/registration/validate" method="post">
   <input type="text" name="Username" placeholder="Enter desired user name" required/>
   <input type="text" name="Password" placeholder="Enter desired password" required/>
   <input type="submit" value="Submit"/>
