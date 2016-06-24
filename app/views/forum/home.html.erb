@@ -12,7 +12,8 @@
     <% messages = Message.last(50) %>
     <!-- Reverse the order so that the newest display at top -->
     <% messages.reverse.each do |message| %>
-    <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(message.user).username + " -- " + message.content  %></p>
+    <% user_id = message.user_id %>
+    <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(user_id).username + " -- " + message.content  %></p>
     <% end %>
   <% end %>
 </div>

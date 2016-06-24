@@ -8,7 +8,7 @@ class ForumController < ApplicationController
   def send_private_message
     @username = params[:Username]
     @message = params[:Message]
-    @sender = params[:Sender]
+    @sender = User.find(session[:id]).username
     @user = User.where(username: @username)[0]
 
     if @user.nil?
@@ -19,6 +19,7 @@ class ForumController < ApplicationController
       @private_message.message = @message
       @private_message.user_id = User.where(username:@username)[0].id
       @private_message.sender = @sender
+      @private_message.save
       redirect_to '/forum/home'
     end
   end
