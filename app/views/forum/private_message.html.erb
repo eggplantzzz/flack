@@ -1,0 +1,9 @@
+<h1>Private message</h1>
+
+<form action="/forum/send_private_message" method="post">
+  <%= flash[:alert] %>
+  <input type="hidden" name="Sender" value="<%= User.find(session[:id]) %>"/>
+  <input type="text" name="Username"/>
+  <input type="text" name="Message"/>
+  <input type="submit" value="Send"/>
+</form>

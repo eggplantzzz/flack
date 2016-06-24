@@ -17,13 +17,18 @@ class HomeController < ApplicationController
     else
       # See if the username and password matches a record in the database
       if @user.password == record[0].password
-        session[:username] = @username
+        session[:id] = record[0].id
         redirect_to '/forum/home'
       # If it doesn't match, send them back to the log in page
       else
         flash[:notice] = "That is not a valid user name. Please try again or register."
         redirect_to '/'
       end
+    end
+
+    def log_out
+      session[:id] = ""
+      redirect_to "/"
     end
 
 

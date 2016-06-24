@@ -32,7 +32,7 @@ RSpec.feature "Postings", type: :feature do
         expect(page).to have_content "Dry as a tomb, your coloured lids"
       end
       And 'I should see the username displayed next to it' do
-        expect(page).to have_content "Dry as a tomb, your coloured lids -- 2345"
+        expect(page).to have_content "2345 -- Dry as a tomb, your coloured lids"
       end
     end
   end

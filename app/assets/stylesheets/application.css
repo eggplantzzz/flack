@@ -74,3 +74,15 @@
   border-width: 2px;
   overflow: auto;
 }
+
+.setings-link {
+  float: right;
+}
+
+.pm-link {
+  float: right;
+}
+
+.log-out-link {
+  float: right;
+}

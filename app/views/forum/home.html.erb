@@ -1,6 +1,9 @@
-<h1 class="head-title">Welcome
-  <%= session[:username] %>
+<h1 class="head-title">Welcome <%= User.find(session[:id]).username %>
 </h1>
+
+<h3 class="settings-link"><a href="/settings/settings">Settings</a></h3>
+<h3 class="pm-link"><a href="/forum/private_message">Send private message</a><h3>
+<h3 class="log-out-link"><a href="/home/log_out">Log out</a></h3>
 
 <!-- Area for displaying messages -->
 <div id="message-area">
@@ -9,7 +12,7 @@
     <% messages = Message.last(50) %>
     <!-- Reverse the order so that the newest display at top -->
     <% messages.reverse.each do |message| %>
-    <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + (message.user).username + " -- " + message.content  %></p>
+    <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(message.user).username + " -- " + message.content  %></p>
     <% end %>
   <% end %>
 </div>

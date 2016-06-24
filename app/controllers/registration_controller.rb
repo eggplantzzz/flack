@@ -10,7 +10,6 @@ class RegistrationController < ApplicationController
     @user.password = @password
     if @user.valid?
       @user.save
-      session[:username] = @username
       redirect_to '/'
     else
       flash[:alert] = "Username already exists. Please choose a different one."

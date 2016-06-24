@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'settings/settings'
+
   get 'forum/home'
 
   get 'forum/post_message'
@@ -10,6 +12,12 @@ Rails.application.routes.draw do
   root 'home#index'
 
   get 'home/login'
+
+  get 'forum/private_message'
+
+  post 'forum/send_private_message'
+
+  get 'home/log_out'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
