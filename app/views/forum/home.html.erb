@@ -1,4 +1,4 @@
-<h1>Welcome
+<h1 class="head-title">Welcome
   <%= session[:username] %>
 </h1>
 
@@ -6,10 +6,10 @@
 <div id="message-area">
   <!-- If there are messages, display up to the last 12 -->
   <% if !(Message.all[0].nil?) %>
-    <% messages = Message.last(12) %>
+    <% messages = Message.last(50) %>
     <!-- Reverse the order so that the newest display at top -->
     <% messages.reverse.each do |message| %>
-    <p><%="   - " + message.content + " :: " + (message.user).username + " -- " + message.created_at.strftime("%I:%M%p on %m/%d/%Y") %></p>
+    <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + (message.user).username + " -- " + message.content  %></p>
     <% end %>
   <% end %>
 </div>
