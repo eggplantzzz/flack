@@ -7,7 +7,7 @@
 
   <section>
     <h1>Private messages</h1>
-    <p><%= @private_messages.length %></p>
+
     <ul>
       <!-- Don't run code if @private_messages is empty -->
       <% if !@private_messages.nil? %>
@@ -18,10 +18,12 @@
     </ul>
     <div id="private_message_display">
 
-      <% if params[:display_private_message] == true %>
-        <p><%= PrivateMessage.find(@private_message_id) %></p>
+      <% if params[:display_private_message].to_s == "true" %>
+        <p><%= PrivateMessage.find(session[:private_message_id]).message %></p>
+        <%= session[:private_messsage_id] = nil %>
       <% end %>
 
     </div>
   </section>
+
 </div>

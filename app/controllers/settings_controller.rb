@@ -9,7 +9,7 @@ class SettingsController < ApplicationController
   end
 
   def show_private_message
-    @private_message_id = params[:private_message_id]
+    session[:private_message_id] = params[:private_message_id].to_i
     redirect_to '/settings/settings?display_private_message=true'
   end
 end
