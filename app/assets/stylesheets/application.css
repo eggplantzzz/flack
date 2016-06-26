@@ -39,6 +39,13 @@
    background-color: #65C2DC;
  }
 
+#private-message-area {
+  width: 100%;
+  text-align: left;
+  border-style: solid;
+  border-width: 1px;
+}
+
  .form-box {
    margin-top: 140px;
    display: flex;

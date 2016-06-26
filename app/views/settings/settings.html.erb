@@ -2,27 +2,28 @@
 <div class="form-box">
   <section>
     <h1>Settings#settings</h1>
-    <p></p>
+    <p><a href="/forum/home">Back to forum</a></p>
   </section>
 
   <section>
-    <h1>Private messages</h1>
+    <div id="private-message-area">
+      <h1>Private messages</h1>
+        <ul>
+          <!-- Don't run code if @private_messages is empty -->
+          <% if !@private_messages.nil? %>
+            <% @private_messages.each do |private_message| %>
+              <li><a href="/settings/show_private_message?private_message_id=<%= private_message.id.to_s %>"> at <%= private_message.created_at.to_s %> from <%= private_message.sender %></a><p><a href="/forum/delete_private_message?private_message_id=<%= private_message.id.to_s %>">Delete message</p></li>
+            <% end %>
+          <% end %>
+        </ul>
+        <div id="private_message_display">
 
-    <ul>
-      <!-- Don't run code if @private_messages is empty -->
-      <% if !@private_messages.nil? %>
-        <% @private_messages.each do |private_message| %>
-          <li><a href="/settings/show_private_message?private_message_id=<%= private_message.id.to_s %>"> at <%= private_message.created_at.to_s %> from <%= private_message.sender %></a></li>
-        <% end %>
-      <% end %>
-    </ul>
-    <div id="private_message_display">
+          <% if params[:display_private_message].to_s == "true" %>
+            <p><%= PrivateMessage.find(session[:private_message_id]).message %></p>
+            <%= session[:private_messsage_id] = nil %>
+          <% end %>
 
-      <% if params[:display_private_message].to_s == "true" %>
-        <p><%= PrivateMessage.find(session[:private_message_id]).message %></p>
-        <%= session[:private_messsage_id] = nil %>
-      <% end %>
-
+        </div>
     </div>
   </section>
 

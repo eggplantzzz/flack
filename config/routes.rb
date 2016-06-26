@@ -21,6 +21,8 @@ Rails.application.routes.draw do
 
   get 'settings/show_private_message'
 
+  get 'forum/delete_private_message'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

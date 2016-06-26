@@ -24,6 +24,12 @@ class ForumController < ApplicationController
     end
   end
 
+  def delete_private_message
+    private_message_id = params[:private_message_id].to_i
+    PrivateMessage.where(id: private_message_id).first.destroy
+    redirect_to 'settings/settings'
+  end
+
   def post_message
     @content = params[:content]
     @user = User.find(session[:id])
