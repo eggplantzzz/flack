@@ -1,13 +1,14 @@
 
 <div class="form-box">
-  <section>
-    <h1>Settings#settings</h1>
-    <p><a href="/forum/home">Back to forum</a></p>
-  </section>
+  <div id="settings-box">
+    <section>
+      <h1>Settings</h1>
+      <p><a href="/forum/home">Back to forum</a></p>
+    </section>
 
-  <section>
-    <div id="private-message-area">
-      <h1>Private messages</h1>
+    <section>
+
+      <h1>Private message inbox</h1>
         <ul>
           <!-- Don't run code if @private_messages is empty -->
           <% if !@private_messages.nil? %>
@@ -24,7 +25,8 @@
           <% end %>
 
         </div>
-    </div>
-  </section>
+      </div>
+
+    </section>
 
 </div>

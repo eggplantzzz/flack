@@ -1,21 +1,26 @@
 <h1 class="head-title">Welcome <%= User.find(session[:id]).username %>
 </h1>
 
-<h3 class="settings-link"><a href="/settings/settings">Settings</a></h3>
-<h3 class="pm-link"><a href="/forum/private_message">Send private message</a><h3>
-<h3 class="log-out-link"><a href="/home/log_out">Log out</a></h3>
 
 <!-- Area for displaying messages -->
-<div id="message-area">
-  <!-- If there are messages, display up to the last 12 -->
-  <% if !(Message.all[0].nil?) %>
-    <% messages = Message.last(50) %>
-    <!-- Reverse the order so that the newest display at top -->
-    <% messages.reverse.each do |message| %>
-    <% user_id = message.user_id %>
-    <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(user_id).username + " -- " + message.content  %></p>
+<div class="container-fluid">
+  <div id="message-area" class="col-sm-8">
+    <!-- If there are messages, display up to the last 12 -->
+    <% if !(Message.all[0].nil?) %>
+      <% messages = Message.last(50) %>
+      <!-- Reverse the order so that the newest display at top -->
+      <% messages.reverse.each do |message| %>
+      <% user_id = message.user_id %>
+      <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(user_id).username + " -- " + message.content  %></p>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
+  <div id="users-area" class="col-sm-4">
+    <h2>Users</h2>
+      <% @users.each do |user| %>
+        <p><%= user.username %></p>
+      <% end %>
+  </div>
 </div>
 
 <!-- Area for allowing user message creation -->
@@ -25,5 +30,13 @@
     <input type="submit" value="Post"/>
     <input id="message-field" type="text" name="content" placeholder="Enter your message here."/>
   </form>
+
+  <div class="container-fluid">
+    <div class="link-box">
+      <h3 class="settings-link col-sm-4"><a href="/settings/settings">Settings</a></h3>
+      <h3 class="pm-link col-sm-4"><a href="/forum/private_message">Send private message</a><h3>
+      <h3 class="log-out-link col-sm-4"><a href="/home/log_out">Log out</a></h3>
+    </div>
+  </div>
 
 </section>
