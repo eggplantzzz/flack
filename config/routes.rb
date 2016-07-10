@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  
+  devise_for :users
+
   get 'settings/settings'
 
   get 'forum/home'
@@ -9,7 +12,7 @@ Rails.application.routes.draw do
 
   post 'registration/validate'
 
-  root 'home#index'
+  root 'users/sign_in'
 
   get 'home/login'
 
