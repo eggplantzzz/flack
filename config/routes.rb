@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  
+
   devise_for :users
+
+  root 'home#index'
 
   get 'settings/settings'
 
@@ -11,8 +13,6 @@ Rails.application.routes.draw do
   get 'registration/register'
 
   post 'registration/validate'
-
-  root 'users/sign_in'
 
   get 'home/login'
 

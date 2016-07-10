@@ -36,8 +36,8 @@ class ForumController < ApplicationController
 
   def post_message
     @content = params[:content]
-    @user = User.find(session[:id])
-    @username = @user.username
+    @user = current_user
+    @email = @user.email
 
     # If the user has not typed any input, do nothing
     if @content.nil? || @content == ""

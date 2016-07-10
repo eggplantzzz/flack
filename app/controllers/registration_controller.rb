@@ -15,7 +15,7 @@ class RegistrationController < ApplicationController
       redirect_to 'forum/home'
     else
       flash[:alert] = "Username already exists. Please choose a different one."
-      redirect_to '/registration/register'
+      redirect_to '/'
     end
   end
 end

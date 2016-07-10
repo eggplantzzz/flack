@@ -1,4 +1,4 @@
-<h1 class="head-title">Welcome <%= User.find(session[:id]).username %>
+<h1 class="head-title">Signed in as <%= current_user.email %>
 </h1>
 
 
@@ -11,14 +11,14 @@
       <!-- Reverse the order so that the newest display at top -->
       <% messages.reverse.each do |message| %>
       <% user_id = message.user_id %>
-      <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(user_id).username + " -- " + message.content  %></p>
+      <p><%="   - [" + message.created_at.strftime("%I:%M%p on %m/%d/%Y")+ "] :: " + User.find(user_id).email + " -- " + message.content  %></p>
       <% end %>
     <% end %>
   </div>
   <div id="users-area" class="col-sm-4">
     <h2>Users</h2>
       <% @users.each do |user| %>
-        <p><%= user.username %></p>
+        <p><%= user.email %></p>
       <% end %>
   </div>
 </div>
