@@ -113,6 +113,11 @@
   float: right;
 }
 
+#logout-link {
+  float: right;
+  margin-right: 30px;
+}
+
 .link-box-container {
   float: right;
   width: 30%;
