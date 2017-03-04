@@ -7,18 +7,17 @@ class ForumController < ApplicationController
   end
 
   def send_private_message
-    @username = params[:Username]
-    @message = params[:Message]
-    @sender = User.find(session[:id]).username
-    @user = User.where(username: @username)[0]
+    @email = params[:email]
+    @message = params[:message]
+    @sender = User.find(session[:id]).email
 
-    if @user.nil?
+    if current_user.nil?
       flash[:alert] = "User does not exist."
       redirect_to '/forum/private_message'
     else
       @private_message = PrivateMessage.new
       @private_message.message = @message
-      @private_message.user_id = User.where(username:@username)[0].id
+      @private_message.user_id = User.where(email: @email)[0].id
       @private_message.sender = @sender
       @private_message.save
       redirect_to '/forum/home'
