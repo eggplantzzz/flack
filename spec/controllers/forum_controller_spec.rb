@@ -4,7 +4,7 @@ RSpec.describe ForumController, type: :controller do
 
   describe "#home()" do
     it "returns http success" do
-      controller.home
+      get :home
       expect(response).to have_http_status(:success)
     end
 
@@ -28,12 +28,18 @@ RSpec.describe ForumController, type: :controller do
     end
 
     before do
-      allow(User).to receive(:find).and_return(sender)
+      allow(controller).to receive(:session).and_return(session)
     end
 
-    it 'looks up the sender' do
-      expect(User).to receive(:find).with(session[:id].to_i)
-      controller.send_private_message
+    describe 'when the user does not exist' do
+      before do
+        allow(User).to receive(:where).and_return([])
+      end
+
+      it 'redirects to the private message view' do
+        get :send_private_message, params
+        expect(response).to redirect_to('/forum/private_message')
+      end
     end
   end
 end
